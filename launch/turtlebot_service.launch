@@ -2,11 +2,14 @@
     <!-- Launching rosbridge websocket server -->
     <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
 
+    <!-- Launching tf2 web republisher -->
+    <node pkg="tf2_web_republisher" type="tf2_web_republisher" name="tf2_web_republisher" />
+
     <!-- Launching interactive marker proxy -->
     <node pkg="interactive_marker_proxy" type="proxy" name="interactive_marker_proxy_map_poses">
         <remap from="target_frame" to="/map" />
         <remap from="topic_ns" to="/map_annotator/map_poses" />
-            <param name="update_rate" value="10.0" />
+        <param name="update_rate" value="10.0" />
     </node>
 
     <!-- Launching collada web server -->
