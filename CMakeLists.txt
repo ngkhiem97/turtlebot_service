@@ -12,8 +12,11 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  rosbridge_server
+  tf2_web_republisher
+  interactive_marker_proxy
+  collada_web_server
 )
-
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -105,7 +108,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES turtlebot_service
-  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime rosbridge_server tf2_web_republisher interactive_marker_proxy collada_web_server
 #  DEPENDS system_lib
 )
 
