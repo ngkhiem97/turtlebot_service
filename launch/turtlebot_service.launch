@@ -14,4 +14,8 @@
 
     <!-- Launching collada web server -->
     <node pkg="collada_web_server" type="run_caddy.bash" name="collada_caddy" cwd="node" />
+
+    <group ns="/turtlebot_service">
+        <node pkg="turtlebot_service" type="robot_manager" name="robot_manager" output="screen"/>
+    </group>
 </launch>
