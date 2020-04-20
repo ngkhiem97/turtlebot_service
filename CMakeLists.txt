@@ -53,6 +53,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
 add_message_files(
   FILES
+  MapDetail.msg
+  MapStatus.msg
+  MapList.msg
   RobotDetail.msg
   RobotList.msg
 )
@@ -138,6 +141,8 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(robot_manager src/robot_manager.cpp)
+add_executable(map_export src/map_export.cpp)
+add_executable(map_manager src/map_manager.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -148,10 +153,18 @@ add_executable(robot_manager src/robot_manager.cpp)
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 add_dependencies(robot_manager ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(map_export ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(map_manager ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(robot_manager
   ${catkin_LIBRARIES}
+)
+target_link_libraries(map_export
+    ${catkin_LIBRARIES}
+)
+target_link_libraries(map_manager
+    ${catkin_LIBRARIES}
 )
 
 #############
