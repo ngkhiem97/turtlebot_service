@@ -65,10 +65,10 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "robot_manager");
     ros::NodeHandle nh;
 
-    robot_list_pub = nh.advertise<turtlebot_service::RobotList>("robot_list", 10);
+    robot_list_pub = nh.advertise<turtlebot_service::RobotList>("robot_manager/list", 10);
 
-    ros::Subscriber rg = nh.subscribe("register", 10, registerCallback);
-    ros::Subscriber rm = nh.subscribe("remove", 10, removeCallback);
+    ros::Subscriber rg = nh.subscribe("robot_manager/register", 10, registerCallback);
+    ros::Subscriber rm = nh.subscribe("robot_manager/remove", 10, removeCallback);
 
     ros::Rate loop_rate(1);
 

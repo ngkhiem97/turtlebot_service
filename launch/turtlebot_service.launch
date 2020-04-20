@@ -17,5 +17,7 @@
 
     <group ns="/turtlebot_service">
         <node pkg="turtlebot_service" type="robot_manager" name="robot_manager" output="screen"/>
+        <node pkg="turtlebot_service" type="map_manager" name="map_manager" output="screen"/>
+        <node pkg="turtlebot_service" type="map_export" name="map_export" output="screen"/>
     </group>
 </launch>
