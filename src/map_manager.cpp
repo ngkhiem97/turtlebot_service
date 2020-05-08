@@ -14,7 +14,6 @@ ros::Publisher map_list_pub;
 // Load all saved map data and store it in "maps" variable
 // for later pubish to "map_manager/list"
 void loadMapData() {
-    ROS_INFO("START LOAD MAP LIST FROM FILE!!!!");
     std::ifstream database("/home/khiem/data/map-data.db");
 
     std::string robot_id, file_name, time_stamp;
@@ -44,6 +43,7 @@ void exportCallback(const turtlebot_service::MapStatus::ConstPtr &msg) {
 
 // call baack "map_export/delete" topic
 void deleteCallback(const std_msgs::String::ConstPtr &msg) {
+
     std::vector<turtlebot_service::MapDetail>::iterator it;
     for (it = maps.begin(); it != maps.end(); ++it) {
 
@@ -91,8 +91,8 @@ void reload() {
 
 //  Write all current maps data back to storage
 void writeMapData() {
-    ROS_INFO("START WRITING MAP LIST TO FILE!!!!");
 
+    // Reload maps from map-data.db file (in case other processes have writen in to the file)
     reload();
 
     // Delete old data by opening in truncate mode
@@ -101,6 +101,7 @@ void writeMapData() {
 
     std::vector<turtlebot_service::MapDetail>::iterator it;
     for (it = maps.begin(); it != maps.end(); ++it) {
+
         database << it->robot_id.c_str() << " " << it->file_name.c_str() << " " << it->time_stamp.c_str() << std::endl;
     }
 
