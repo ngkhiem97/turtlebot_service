@@ -58,6 +58,8 @@ add_message_files(
   MapList.msg
   RobotDetail.msg
   RobotList.msg
+  PoseNames.msg
+  UserAction.msg
 )
 
 ## Generate services in the 'srv' folder

@@ -5,10 +5,13 @@
     <!-- Launching tf2 web republisher -->
     <node pkg="tf2_web_republisher" type="tf2_web_republisher" name="tf2_web_republisher" />
 
+    <!-- Interactive marker server -->
+    <node pkg="turtlebot_service" type="marker_server.py" name="marker_server" args="$(env HOME)/data/test_poses.db"/>
+
     <!-- Launching interactive marker proxy -->
     <node pkg="interactive_marker_proxy" type="proxy" name="interactive_marker_proxy_map_poses">
         <remap from="target_frame" to="/map" />
-        <remap from="topic_ns" to="/map_annotator/map_poses" />
+        <remap from="topic_ns" to="/marker_server/map_poses" />
         <param name="update_rate" value="10.0" />
     </node>
 
