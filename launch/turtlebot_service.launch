@@ -1,4 +1,7 @@
 <launch>
+    <!-- Interactive marker server -->
+    <node pkg="turtlebot_service" type="marker_server.py" name="marker_server" args="$(env HOME)/data/test_poses.db"/>
+
     <!-- Launching rosbridge websocket server -->
     <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
 

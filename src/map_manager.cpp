@@ -14,7 +14,7 @@ ros::Publisher map_list_pub;
 // Load all saved map data and store it in "maps" variable
 // for later pubish to "map_manager/list"
 void loadMapData() {
-    ROS_INFO("START LOAD MAP LIST FROM FILE!!!!");
+    //ROS_INFO("START LOAD MAP LIST FROM FILE!!!!");
     std::ifstream database("/home/khiem/data/map-data.db");
 
     std::string robot_id, file_name, time_stamp;
@@ -91,7 +91,7 @@ void reload() {
 
 //  Write all current maps data back to storage
 void writeMapData() {
-    ROS_INFO("START WRITING MAP LIST TO FILE!!!!");
+    //ROS_INFO("START WRITING MAP LIST TO FILE!!!!");
 
     reload();
 
