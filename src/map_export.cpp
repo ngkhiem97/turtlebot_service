@@ -26,6 +26,7 @@ void registerCallback(const std_msgs::String::ConstPtr &msg) {
   " && convert ~/catkin_ws/src/collada_web_server/map/"+file_name+".pgm"
   " ~/catkin_ws/src/collada_web_server/map/"+file_name+".jpg").c_str());
   
+  // Publish map exporting status
   turtlebot_service::MapStatus statusMsg;
   if (status < 0) {
     statusMsg.status  = "Error";

@@ -29,12 +29,19 @@ bool existRobotId(std::string message) {
     return false;
 }
 
+// --- CALLBACK FUNCTION ON MESSAGE RECEIVE ---
+
 void registerCallback(const std_msgs::String::ConstPtr &msg) {
     if (!existRobotId(msg->data.c_str())) {
+
+        // Register the robot
         turtlebot_service::RobotDetail robot_detail;
         robot_detail.robot_id   = msg->data.c_str();
         robot_detail.created_at = getTimeStr();
         registered_robots.push_back(robot_detail);
+
+        // Start the SLAM client as background process
+        system((std::string("roslaunch turtlebot_service turtlebot_service_slam_client.launch robot_id:=") + msg->data.c_str() + std::string(" &")).c_str());
     }
 }
 
